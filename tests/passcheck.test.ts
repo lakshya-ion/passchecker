@@ -1,5 +1,7 @@
 import { Password } from "../src/passcheck";
-
+const passChecker = (pass: string) => {
+  Password.passChecker(pass);
+};
 describe("Passchecker", () => {
   it("The password should be 8 characters long", () => {
     const testArr = [
@@ -14,7 +16,7 @@ describe("Passchecker", () => {
     ];
 
     testArr.forEach((pass) => {
-      expect(() => new Password(pass.password)).toThrow(
+      expect(() => passChecker(pass.password)).toThrow(
         new RegExp(`^${pass.expected}$`)
       );
     });
@@ -32,7 +34,7 @@ describe("Passchecker", () => {
       },
     ];
     testArr.forEach((pass) => {
-      expect(() => new Password(pass.password)).toThrow(
+      expect(() => passChecker(pass.password)).toThrow(
         new RegExp(`^${pass.expected}$`)
       );
     });
@@ -50,7 +52,7 @@ describe("Passchecker", () => {
       },
     ];
     testArr.forEach((pass) => {
-      expect(() => new Password(pass.password)).toThrow(
+      expect(() => passChecker(pass.password)).toThrow(
         new RegExp(`^${pass.expected}$`)
       );
     });
@@ -68,7 +70,7 @@ describe("Passchecker", () => {
       },
     ];
     testArr.forEach((pass) => {
-      expect(() => new Password(pass.password)).toThrow(
+      expect(() => passChecker(pass.password)).toThrow(
         new RegExp(`^${pass.expected}$`)
       );
     });
@@ -80,7 +82,7 @@ describe("Passchecker", () => {
       { password: "Ash@123$$", expected: "" },
     ];
     testArr.forEach((pass) => {
-      expect(() => new Password(pass.password)).not.toThrow();
+      expect(() => passChecker(pass.password)).not.toThrow();
     });
   });
 
@@ -164,7 +166,7 @@ describe("Passchecker", () => {
       },
     ];
     testArr.forEach((pass) => {
-      expect(() => new Password(pass.password)).toThrow(
+      expect(() => passChecker(pass.password)).toThrow(
         new RegExp(`^${pass.expected}$`)
       );
     });

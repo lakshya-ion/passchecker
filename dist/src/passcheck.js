@@ -2,12 +2,9 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Password = void 0;
 var Password = /** @class */ (function () {
-    function Password(initialPw) {
-        //if the passChecker function throws an exception, then the constructor will also throw the same error
-        this.passChecker(initialPw);
-        this.pw = initialPw;
+    function Password() {
     }
-    Password.prototype.passChecker = function (password) {
+    Password.passChecker = function (password) {
         //prettier-ignore
         var possibilities = new Map([
             [0, ""],

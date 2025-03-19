@@ -1,6 +1,9 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var passcheck_1 = require("../src/passcheck");
+var passChecker = function (pass) {
+    passcheck_1.Password.passChecker(pass);
+};
 describe("Passchecker", function () {
     it("The password should be 8 characters long", function () {
         var testArr = [
@@ -14,7 +17,7 @@ describe("Passchecker", function () {
             },
         ];
         testArr.forEach(function (pass) {
-            expect(function () { return new passcheck_1.Password(pass.password); }).toThrow(new RegExp("^".concat(pass.expected, "$")));
+            expect(function () { return passChecker(pass.password); }).toThrow(new RegExp("^".concat(pass.expected, "$")));
         });
     });
     it("Should return error if the password doesn't have 2 numbers", function () {
@@ -29,7 +32,7 @@ describe("Passchecker", function () {
             },
         ];
         testArr.forEach(function (pass) {
-            expect(function () { return new passcheck_1.Password(pass.password); }).toThrow(new RegExp("^".concat(pass.expected, "$")));
+            expect(function () { return passChecker(pass.password); }).toThrow(new RegExp("^".concat(pass.expected, "$")));
         });
     });
     it("should return error in case of a capital letter not being present", function () {
@@ -44,7 +47,7 @@ describe("Passchecker", function () {
             },
         ];
         testArr.forEach(function (pass) {
-            expect(function () { return new passcheck_1.Password(pass.password); }).toThrow(new RegExp("^".concat(pass.expected, "$")));
+            expect(function () { return passChecker(pass.password); }).toThrow(new RegExp("^".concat(pass.expected, "$")));
         });
     });
     it("should return error in case of a special character not being present", function () {
@@ -59,7 +62,7 @@ describe("Passchecker", function () {
             },
         ];
         testArr.forEach(function (pass) {
-            expect(function () { return new passcheck_1.Password(pass.password); }).toThrow(new RegExp("^".concat(pass.expected, "$")));
+            expect(function () { return passChecker(pass.password); }).toThrow(new RegExp("^".concat(pass.expected, "$")));
         });
     });
     it("should return pass in case of a valid password", function () {
@@ -68,7 +71,7 @@ describe("Passchecker", function () {
             { password: "Ash@123$$", expected: "" },
         ];
         testArr.forEach(function (pass) {
-            expect(function () { return new passcheck_1.Password(pass.password); }).not.toThrow();
+            expect(function () { return passChecker(pass.password); }).not.toThrow();
         });
     });
     it("Should return multiple errors if the password doesn't have 2 numbers and is shorter than 8 characters", function () {
@@ -135,7 +138,7 @@ describe("Passchecker", function () {
             },
         ];
         testArr.forEach(function (pass) {
-            expect(function () { return new passcheck_1.Password(pass.password); }).toThrow(new RegExp("^".concat(pass.expected, "$")));
+            expect(function () { return passChecker(pass.password); }).toThrow(new RegExp("^".concat(pass.expected, "$")));
         });
     });
 });

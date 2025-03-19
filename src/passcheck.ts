@@ -1,13 +1,5 @@
 export class Password {
-  private pw: string;
-
-  constructor(initialPw: string) {
-    //if the passChecker function throws an exception, then the constructor will also throw the same error
-    this.passChecker(initialPw);
-    this.pw = initialPw;
-  }
-
-  private passChecker(password: string): void {
+  static passChecker(password: string): void {
     //prettier-ignore
     const possibilities = new Map<number, string>([
       [0,""],
